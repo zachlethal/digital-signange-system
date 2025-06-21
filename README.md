@@ -21,79 +21,51 @@
 
 ---
 
-# 📦 About Laravel
+# 🖥️ Digital Signage System
 
-**Laravel** is a web application framework with expressive and elegant syntax.  
-It’s designed to make development enjoyable and productive, handling common tasks used in modern web projects, including:
-
-- ⚡ [Fast and simple routing](https://laravel.com/docs/routing)
-- 💉 [Powerful dependency injection container](https://laravel.com/docs/container)
-- 💾 Support for multiple [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) backends
-- 📚 [Elegant Eloquent ORM](https://laravel.com/docs/eloquent)
-- 🧱 Database-agnostic [migrations](https://laravel.com/docs/migrations)
-- 🧵 [Queueing system](https://laravel.com/docs/queues)
-- 📡 [Real-time broadcasting](https://laravel.com/docs/broadcasting)
-
-Laravel provides all the tools needed to build large, robust web applications.
+This is a **custom digital signage system** built using the Laravel framework. It enables administrators to manage and control media content displayed on screens (TVs) in various departments or zones. It is designed for internal use in organizations like **Algérie Télécom** to distribute information or promotional content effectively.
 
 ---
 
-## 📘 Learning Laravel
+## 📌 Features
 
-Laravel offers the most extensive and beginner-friendly documentation of any modern framework:
+- 🎯 **Department & Zone Management**  
+  Organize screens by department and zone for easy targeting.
 
-- 📚 Official Docs: [laravel.com/docs](https://laravel.com/docs)
-- 🚀 Laravel Bootcamp: [bootcamp.laravel.com](https://bootcamp.laravel.com)
-- 🎥 Laracasts: [laracasts.com](https://laracasts.com) — A rich video library covering Laravel, PHP, testing, and JavaScript.
+- 📺 **TV Screen Management**  
+  Register and configure screens to receive specific media.
 
----
+- 📂 **Media Library**  
+  Upload and categorize images, videos, or dynamic content.
 
-## 💎 Laravel Sponsors
+- ⏱️ **Scheduled Display**  
+  Control when and where media appears using scheduled rules.
 
-We extend our thanks to the sponsors who help support ongoing Laravel development.  
-Interested in becoming one? Visit the [Laravel Partners](https://partners.laravel.com) page.
+- 📊 **Dashboard & Analytics**  
+  Monitor screen usage and content status via a real-time dashboard.
 
-### Premium Partners
-
-- [Vehikl](https://vehikl.com/)
-- [Tighten Co.](https://tighten.co)
-- [WebReinvent](https://webreinvent.com/)
-- [Kirschbaum Development Group](https://kirschbaumdevelopment.com)
-- [64 Robots](https://64robots.com)
-- [Curotec](https://www.curotec.com/services/technologies/laravel/)
-- [Cyber-Duck](https://cyber-duck.co.uk)
-- [DevSquad](https://devsquad.com/hire-laravel-developers)
-- [Jump24](https://jump24.co.uk)
-- [Redberry](https://redberry.international/laravel/)
-- [Active Logic](https://activelogic.com)
-- [byte5](https://byte5.de)
-- [OP.GG](https://op.gg)
+- 🔒 **Role-based Access Control**  
+  Admins and supervisors have different permissions and visibility.
 
 ---
 
-## 🤝 Contributing
+## ⚙️ Tech Stack
 
-Thinking of contributing? Great!  
-Please read the [contribution guide](https://laravel.com/docs/contributions) before you get started.
-
----
-
-## 🧾 Code of Conduct
-
-Laravel is committed to a welcoming and inclusive community.  
-Please review and follow our [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **Backend**: Laravel 10+
+- **Admin Panel**: Filament PHP
+- **Database**: MySQL / MariaDB
+- **Frontend**: Blade, Livewire (or Inertia depending on your setup)
+- **TV Client**: Custom HTML/JS frontend that polls assigned content
 
 ---
 
-## 🔐 Security Vulnerabilities
+## 🚀 Installation
 
-If you discover a security vulnerability in Laravel, please email **Taylor Otwell** at [taylor@laravel.com](mailto:taylor@laravel.com).  
-All security issues are promptly addressed.
-
----
-
-## 📄 License
-
-Laravel is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
----
+```bash
+git clone https://github.com/yourusername/digital-signage-system.git
+cd digital-signage-system
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
