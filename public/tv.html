@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TV Display</title>
+  <style>
+    body { margin: 0; background: black; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    img, video { max-width: 100vw; max-height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="media-container"></div>
+
+  <script>
+    const screenCode = new URLSearchParams(window.location.search).get('code');
+    const API_URL = `http://127.0.0.1:8000/api/playlist/${screenCode}`;
+    let currentIndex = 0;
+    let playlist = [];
+
+    async function loadPlaylist() {
+      try {
+        const res = await fetch(API_URL);
+        playlist = await res.json();
+        currentIndex = 0;
+        playMedia();
+      } catch (error) {
+        console.error('Failed to load playlist:', error);
+      }
+    }
+
+    function playMedia() {
+      if (!playlist.length) return;
+
+      const media = playlist[currentIndex];
+      const container = document.getElementById('media-container');
+      container.innerHTML = '';
+
+      if (media.type === 'image') {
+        const img = document.createElement('img');
+        img.src = media.url;
+        container.appendChild(img);
+        setTimeout(nextMedia, media.duration || 5000);
+      } else if (media.type === 'video') {
+        const video = document.createElement('video');
+        video.src = media.url;
+        video.autoplay = true;
+        video.controls = false;
+        video.onended = nextMedia;
+        container.appendChild(video);
+      }
+    }
+
+    function nextMedia() {
+      currentIndex = (currentIndex + 1) % playlist.length;
+      playMedia();
+    }
+
+    loadPlaylist();
+    setInterval(loadPlaylist, 30000); // reload playlist every 30 seconds
+  </script>
+</body>
+</html>
